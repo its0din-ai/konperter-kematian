@@ -120,65 +120,68 @@ def submain(to):
 
 # BINARY
 def bin_dec():
-    print("Binary to Decimal")
+    print("+============[Binary to Decimal]============+")
     submain(bins)
 
 def bin_oct():
-    print("Binary to Octal")
-    inputan = str(input("Masukkan bilangan desimal: "))
-    print("-------------------------------------------------")
-    print(f"{inputan}")
-    
-    xx = "55"
-    print(f"typex :: {type(xx)} | typey :: {type(int(xx))}")
-
+    print("+============[Binary to Octal]============+")
+    inputan = str(input("Masukkan bilangan Biner: "))
+    print("+-------------------------------------------------------------------------------------+")
     if len(inputan) % 3 == 0:
-        zx = list(map(''.join, zip(*[iter(inputan)]*3)))
+        jobss = list(map(''.join, zip(*[iter(inputan)]*3)))
         hasil = ""
-        print(zx)
-        for i in range(0, len(zx)):
-            hasil += oct(int(zx[i], 2))[2:]
-        print(hasil)
-        # print(f"Hasil Octal adalah {oct(zx[])}")
+        for i in range(0, len(jobss)):
+            hasil += oct(int(jobss[i], 2))[2:]
+        print(f"Biner {inputan} dalam Oktal adalah {hasil}")
+        print(f"*) {jobss}radiks-2 \n=> {list(map(( lambda x: ' ' + x + ' '), hasil))}radiks-8")
 
     elif len(inputan) % 3 == 2:
         bint = "0" + inputan
-        print(bint)
+        jobss = list(map(''.join, zip(*[iter(bint)]*3)))
+        hasil = ""
+        for i in range(0, len(jobss)):
+            hasil += oct(int(jobss[i], 2))[2:]
+        print(f"Biner {inputan} dalam Oktal adalah {hasil}")
+        print(f"*) {jobss}radiks-2 \n=> {list(map(( lambda x: ' ' + x + ' '), hasil))}radiks-8")
     elif len(inputan) % 3 == 1:
         bint = "00" + inputan
-        print(bint)
+        jobss = list(map(''.join, zip(*[iter(bint)]*3)))
+        hasil = ""
+        for i in range(0, len(jobss)):
+            hasil += oct(int(jobss[i], 2))[2:]
+        print(f"Biner {inputan} dalam Oktal adalah {hasil}")
+        print(f"*) {jobss}radiks-2 \n=> {list(map(( lambda x: ' ' + x + ' '), hasil))}radiks-8")
     else:
         print("[!] TYPE ERROR")
         exit(0)
 
-    # print(f"Hasil Konversi dari {inputan} Desimal adalah {s} Binary")
-    print("-------------------------------------------------")
+    print("+-------------------------------------------------------------------------------------+")
     submain(bins)
 
 def bin_hex():
-    print("Binary to Hexadecimal")
+    print("+============[Binary to Hexadecimal]============+")
     submain(bins)
 
 
 # OCTAL
 def oct_dec():
-    print("Octal to Decimal")
+    print("+============[Octal to Decimal]============+")
     submain(octs)
 
 def oct_bin():
-    print("Octal to Binary")
+    print("+============[Octal to Binary]============+")
     submain(octs)
 
 def oct_hex():
-    print("Octal to Hexadecimal")
+    print("+============[Octal to Hexadecimal]============+")
     submain(octs)
 
 
 # DECIMAL
 def dec_bin():
-    print("Decimal to Binary")
+    print("+============[Decimal to Binary]============+")
     inputan = float(input("Masukkan bilangan desimal: "))
-    print("-------------------------------------------------")
+    print("+-------------------------------------------------------------------------------------+")
     print(f"{inputan}")
     desimal = 0.0
     desimal += inputan
@@ -196,13 +199,13 @@ def dec_bin():
         hasilAkhir = hasil[::-1]
 
     print(f"Hasil Konversi dari {inputan} Desimal adalah {hasilAkhir} Binary")
-    print("-------------------------------------------------")
+    print("+-------------------------------------------------------------------------------------+")
     submain(decs)
 
 def dec_oct():
-    print("Decimal to Octal")
+    print("+============[Decimal to Octal]============+")
     inputan = float(input("Masukkan bilangan desimal: "))
-    print("-------------------------------------------------")
+    print("+-------------------------------------------------------------------------------------+")
     print(f"{inputan}")
     desimal = 0.0
     desimal += inputan
@@ -220,13 +223,13 @@ def dec_oct():
         hasilAkhir = hasil[::-1]
 
     print(f"Hasil Konversi dari {inputan} Desimal adalah {hasilAkhir} Octal")
-    print("-------------------------------------------------")
+    print("+-------------------------------------------------------------------------------------+")
     submain(decs)
 
 def dec_hex():
-    print("Decimal to Hexadecimal")
+    print("+============[Decimal to Hexadecimal]============+")
     inputan = float(input("Masukkan bilangan desimal: "))
-    print("-------------------------------------------------")
+    print("+-------------------------------------------------------------------------------------+")
     print(f"{inputan}")
     desimal = 0.0
     desimal += inputan
@@ -238,21 +241,21 @@ def dec_hex():
             hasil += str(hex(int(vv)).replace("0x","").upper())
             print(f"{desimal} sisa {vv} -> dalam hex :: {hex(int(vv))}")
     print(f"Hasil Konversi dari {inputan} Desimal adalah {hasil[::-1]} Hexa")
-    print("-------------------------------------------------")
+    print("+-------------------------------------------------------------------------------------+")
     submain(decs)
 
 
 # HEXADECIMAL
 def hex_dec():
-    print("Hexadecimal to Decimal")
+    print("+============[Hexadecimal to Decimal]============+")
     submain(hexs)
 
 def hex_bin():
-    print("Hexadecimal to Binary")
+    print("+============[Hexadecimal to Binary]============+")
     submain(hexs)
 
 def hex_oct():
-    print("Hexadecimal to Octal")
+    print("+============[Hexadecimal to Octal]============+")
     submain(hexs)
 
 
