@@ -1,7 +1,12 @@
 #!/usr/bin/python
 
+from tabulate import tabulate
+
 
 # KONVERTER BILANGAN
+
+import re
+
 
 bins = "biner"
 octs = "oktal"
@@ -121,6 +126,25 @@ def submain(to):
 # BINARY
 def bin_dec():
     print("+============[Binary to Decimal]============+")
+    inputan = str(input("Masukkan bilangan Biner: "))
+    print("+-------------------------------------------------------------------------------------+")
+    rev = inputan[::-1]
+    desimal = 0
+    arrr = list(rev.strip(" "))
+    mult = []
+    way = []
+    hasilAkhir = "+".join(mult[::-1])
+    for i in range(0, len(rev)):
+        kalkul = (int(rev[i])*2)**i
+        desimal += kalkul
+        mult.append(f"{kalkul}")
+        way.append(f"({rev[i]}x2)^{i}")
+
+    table = [arrr[::-1], way[::-1], mult[::-1]]
+    print(tabulate(table, tablefmt='fancy_grid'))
+    print("------------------------------------------")
+    print(f"Hasil dari biner {inputan} adalah {hasilAkhir} = {desimal} Desimal")
+    print("+-------------------------------------------------------------------------------------+")
     submain(bins)
 
 def bin_oct():
@@ -132,8 +156,11 @@ def bin_oct():
         hasil = ""
         for i in range(0, len(jobss)):
             hasil += oct(int(jobss[i], 2))[2:]
+        hasilAkhir = list(map(( lambda x: ' ' + x + ' '), hasil))
+
+        table = [[jobss, "rad-2"], [hasilAkhir, "rad-8"]]
+        print(tabulate(table, tablefmt='fancy_grid'))
         print(f"Biner {inputan} dalam Oktal adalah {hasil}")
-        print(f"*) {jobss}radiks-2 \n=> {list(map(( lambda x: ' ' + x + ' '), hasil))}radiks-8")
 
     elif len(inputan) % 3 == 2:
         bint = "0" + inputan
@@ -141,20 +168,27 @@ def bin_oct():
         hasil = ""
         for i in range(0, len(jobss)):
             hasil += oct(int(jobss[i], 2))[2:]
+        hasilAkhir = list(map(( lambda x: ' ' + x + ' '), hasil))
+
+        table = [[jobss, "rad-2"], [hasilAkhir, "rad-8"]]
+        print(tabulate(table, tablefmt='fancy_grid'))
         print(f"Biner {inputan} dalam Oktal adalah {hasil}")
-        print(f"*) {jobss}radiks-2 \n=> {list(map(( lambda x: ' ' + x + ' '), hasil))}radiks-8")
+
     elif len(inputan) % 3 == 1:
         bint = "00" + inputan
         jobss = list(map(''.join, zip(*[iter(bint)]*3)))
         hasil = ""
         for i in range(0, len(jobss)):
             hasil += oct(int(jobss[i], 2))[2:]
+        hasilAkhir = list(map(( lambda x: ' ' + x + ' '), hasil))
+
+        table = [[jobss, "rad-2"], [hasilAkhir, "rad-8"]]
+        print(tabulate(table, tablefmt='fancy_grid'))
         print(f"Biner {inputan} dalam Oktal adalah {hasil}")
-        print(f"*) {jobss}radiks-2 \n=> {list(map(( lambda x: ' ' + x + ' '), hasil))}radiks-8")
+
     else:
         print("[!] TYPE ERROR")
         exit(0)
-
     print("+-------------------------------------------------------------------------------------+")
     submain(bins)
 
