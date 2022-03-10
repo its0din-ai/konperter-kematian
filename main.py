@@ -133,13 +133,14 @@ def bin_dec():
     arrr = list(rev.strip(" "))
     mult = []
     way = []
-    hasilAkhir = "+".join(mult[::-1])
     for i in range(0, len(rev)):
-        kalkul = (int(rev[i])*2)**i
+        axx = int(rev[i])
+        kalkul = axx*2**i
         desimal += kalkul
         mult.append(f"{kalkul}")
         way.append(f"({rev[i]}x2)^{i}")
 
+    hasilAkhir = "+".join(mult[::-1])
     table = [arrr[::-1], way[::-1], mult[::-1]]
     print(tabulate(table, tablefmt='fancy_grid'))
     print("------------------------------------------")
@@ -194,12 +195,111 @@ def bin_oct():
 
 def bin_hex():
     print("+============[Binary to Hexadecimal]============+")
+    # inputan = str(input("Masukkan bilangan Biner: "))
+    # print("+-------------------------------------------------------------------------------------+")
+    # if len(inputan) % 4 == 0:
+    #     inptn = list(map(''.join, zip(*[iter(inputan)]*4)))
+    #     rev = inptn[::-1]
+    #     desimal = []
+    #     for i in range(0, len(inptn)):
+    #         for j in range(0, len(rev[i])):
+    #             kalkul = (int(rev[j])*2)**j
+    #             x = 0
+    #             x += kalkul
+    #             desimal.append(f"{x}")
+
+    #     table = [inptn, [desimal]]
+    #     print(tabulate(table, tablefmt='fancy_grid'))
+    #     print("------------------------------------------")
+    #     print(f"Hasil dari biner")
+
+    # elif len(inputan) % 4 == 3:
+    #     bint = "0" + inputan
+    #     rev = bint[::-1]
+    #     desimal = 0
+    #     arrr = list(rev.strip(" "))
+    #     mult = []
+    #     way = []
+    #     hasilAkhir = "+".join(mult[::-1])
+    #     for i in range(0, len(rev)):
+    #         kalkul = (int(rev[i])*2)**i
+    #         desimal += kalkul
+    #         mult.append(f"{kalkul}")
+    #         way.append(f"({rev[i]}x2)^{i}")
+
+    #     table = [arrr[::-1], way[::-1], mult[::-1]]
+    #     print(tabulate(table, tablefmt='fancy_grid'))
+    #     print("------------------------------------------")
+    #     print(f"Hasil dari biner {inputan} adalah {hasilAkhir} = {desimal} Desimal")
+
+    # elif len(inputan) % 4 == 2:
+    #     bint = "00" + inputan
+    #     rev = bint[::-1]
+    #     desimal = 0
+    #     arrr = list(rev.strip(" "))
+    #     mult = []
+    #     way = []
+    #     hasilAkhir = "+".join(mult[::-1])
+    #     for i in range(0, len(rev)):
+    #         kalkul = (int(rev[i])*2)**i
+    #         desimal += kalkul
+    #         mult.append(f"{kalkul}")
+    #         way.append(f"({rev[i]}x2)^{i}")
+
+    #     table = [arrr[::-1], way[::-1], mult[::-1]]
+    #     print(tabulate(table, tablefmt='fancy_grid'))
+    #     print("------------------------------------------")
+    #     print(f"Hasil dari biner {inputan} adalah {hasilAkhir} = {desimal} Desimal")
+
+    # elif len(inputan) % 4 == 1:
+    #     bint = "000" + inputan
+    #     rev = bint[::-1]
+    #     desimal = 0
+    #     arrr = list(rev.strip(" "))
+    #     mult = []
+    #     way = []
+    #     hasilAkhir = "+".join(mult[::-1])
+    #     for i in range(0, len(rev)):
+    #         kalkul = (int(rev[i])*2)**i
+    #         desimal += kalkul
+    #         mult.append(f"{kalkul}")
+    #         way.append(f"({rev[i]}x2)^{i}")
+
+    #     table = [arrr[::-1], way[::-1], mult[::-1]]
+    #     print(tabulate(table, tablefmt='fancy_grid'))
+    #     print("------------------------------------------")
+    #     print(f"Hasil dari biner {inputan} adalah {hasilAkhir} = {desimal} Desimal")
+
+    # else:
+    #     print("[!] TYPE ERROR")
+    #     exit(0)
+    print("+-------------------------------------------------------------------------------------+")
     submain(bins)
 
 
 # OCTAL
 def oct_dec():
     print("+============[Octal to Decimal]============+")
+    inputan = str(input("Masukkan bilangan Biner: "))
+    print("+-------------------------------------------------------------------------------------+")
+    rev = inputan[::-1]
+    desimal = 0
+    arrr = list(rev.strip(" "))
+    mult = []
+    way = []
+    for i in range(0, len(rev)):
+        axx = int(rev[i])
+        kalkul = axx*8**i
+        desimal += kalkul
+        mult.append(f"{kalkul}")
+        way.append(f"({rev[i]}x8)^{i}")
+
+    hasilAkhir = "+".join(mult[::-1])
+    table = [arrr[::-1], way[::-1], mult[::-1]]
+    print(tabulate(table, tablefmt='fancy_grid'))
+    print("------------------------------------------")
+    print(f"Hasil dari Oktal {inputan} adalah {hasilAkhir} = {desimal} Desimal")
+    print("+-------------------------------------------------------------------------------------+")
     submain(octs)
 
 def oct_bin():
