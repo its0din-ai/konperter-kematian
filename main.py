@@ -1,7 +1,8 @@
 #!/usr/bin/python
 import os
-from urllib.request import HTTPBasicAuthHandler
+import sys
 from tabulate import tabulate
+from termcolor import colored, cprint
 
 version = "0.4-dev"
 
@@ -12,19 +13,18 @@ hexs = "hexa"
 
 def main():
     os.system('cls' if os.name == 'nt' else 'clear')
-    print("+==================================+")
-    print("|        KONVERTER BILANGAN        |")
-    print("+==================================+")
-    print(f"|    ver.{version}, by encrypt0r     |")
-    print("+==================================+")
-    print("| [1] Biner                        |")
-    print("| [2] Oktal                        |")
-    print("| [3] Desimal                      |")
-    print("| [4] Heksadesimal                 |")
-    print("| [0] Keluar                       |")
-    print("+==================================+")
+    cprint("+==================================+", 'red', attrs=['bold'])
+    cprint("|        KONVERTER BILANGAN        |", 'red', attrs=['bold'])
+    cprint("+==================================+", 'red', attrs=['bold'])
+    cprint(f"|    ver.{version}, by encrypt0r     |", 'red', attrs=['bold'])
+    cprint("+==================================+", 'white', attrs=['bold'])
+    cprint("| [1] Biner                        |", 'white', attrs=['bold'])
+    cprint("| [2] Oktal                        |", 'white', attrs=['bold'])
+    cprint("| [3] Desimal                      |", 'white', attrs=['bold'])
+    cprint("| [4] Heksadesimal                 |", 'white', attrs=['bold'])
+    cprint("| [0] Keluar                       |", 'white', attrs=['bold'])
+    cprint("+==================================+", 'white', attrs=['bold'])
     pilih = int(input("Masukkan pilihan anda =>> "))
-    print(pilih)
     if pilih == 1:
         os.system('cls' if os.name == 'nt' else 'clear')
         submain(bins)
@@ -172,10 +172,14 @@ def bin_dec():
         way.append(f"({rev[i]}x2)^{i}")
 
     hasilAkhir = "+".join(mult)
+    # TABLE
     table = [arrr[::-1], way[::-1], mult[::-1]]
-    print(tabulate(table, tablefmt='fancy_grid'))
-    print("------------------------------------------")
-    print(f"+==> Hasil dari biner {inputan} adalah {hasilAkhir} = {desimal} Desimal")
+    cprint(tabulate(table, tablefmt='fancy_grid'), 'yellow')
+    # OUTPUT - GLOBAL COLORS
+    inputanWrn = colored(f"{inputan}", 'yellow', attrs=['bold', 'underline'])
+    akhirWrn = colored(f"{hasilAkhir}", 'yellow', attrs=['underline'])
+    desimalWrn = colored(f"{desimal}", 'yellow', attrs=['bold', 'underline'])
+    print(f"\n+==> Hasil dari biner {inputanWrn} adalah {akhirWrn} = {desimalWrn} Desimal")
     print("+-------------------------------------------------------------------------------------+")
     opt = input("LANJUT Konversi Biner ke Desimal? y/N :  ").upper()
     if opt == "Y":
