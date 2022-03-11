@@ -1,52 +1,61 @@
 #!/usr/bin/python
-
+import os
 from tabulate import tabulate
 
-
-# KONVERTER BILANGAN
-
-import re
-
+version = "0.4-dev"
 
 bins = "biner"
 octs = "oktal"
 decs = "desimal"
 hexs = "hexa"
 
+
+
 def main():
-    print("\nKONVERTER BILANGAN")
-    print("=================")
-    print("1. Biner")
-    print("2. Oktal")
-    print("3. Desimal")
-    print("4. Hexadesimal")
-    print("5. Keluar")
-    print("=================")
-    pilih = int(input("Masukkan pilihan anda: "))
+    os.system('cls' if os.name == 'nt' else 'clear')
+    print("+==================================+")
+    print("|        KONVERTER BILANGAN        |")
+    print("+==================================+")
+    print(f"|    ver.{version}, by encrypt0r     |")
+    print("+==================================+")
+    print("| [1] Biner                        |")
+    print("| [2] Oktal                        |")
+    print("| [3] Desimal                      |")
+    print("| [4] Heksadesimal                 |")
+    print("| [5] Keluar                       |")
+    print("+==================================+")
+    pilih = int(input("Masukkan pilihan anda =>> "))
+    print(pilih)
     if pilih == 1:
+        os.system('cls' if os.name == 'nt' else 'clear')
         submain(bins)
     elif pilih == 2:
+        os.system('cls' if os.name == 'nt' else 'clear')
         submain(octs)
     elif pilih == 3:
+        os.system('cls' if os.name == 'nt' else 'clear')
         submain(decs)
     elif pilih == 4:
+        os.system('cls' if os.name == 'nt' else 'clear')
         submain(hexs)
     elif pilih == 5:
-        exit()
+        os.system('cls' if os.name == 'nt' else 'clear')
+        exit(0)
     else:
-        print("\nPilihan tidak ada!")
+        print("\nPilihan Tidak Tersedia.!!")
         main()
 
 def submain(to):
     if to == bins:
-        print("\nKONVERSI BINER")
-        print("===============")
-        print("1. Biner ke Desimal")
-        print("2. Biner ke Oktal")
-        print("3. Biner ke Hexadesimal")
-        print("4. Kembali")
-        print("===============")
-        pilih = int(input("Masukkan pilihan anda: "))
+        print("+==================================+")
+        print("|          KONVERSI BINER          |")
+        print("+==================================+")
+        print("| [1] Biner ke Desimal             |")
+        print("| [2] Biner ke Oktal               |")
+        print("| [3] Biner ke Heksadesimal        |")
+        print("| [4] Kembali                      |")
+        print("+==================================+")
+        pilih = int(input("Masukkan pilihan anda =>> "))
         if pilih == 1:
             bin_dec()
         elif pilih == 2:
@@ -59,14 +68,15 @@ def submain(to):
             print("\nPilihan tidak ada!")
             submain(to)
     elif to == octs:
-        print("\nKONVERSI OKTAL")
-        print("===============")
-        print("1. Oktal ke Desimal")
-        print("2. Oktal ke Biner")
-        print("3. Oktal ke Hexadesimal")
-        print("4. Kembali")
-        print("===============")
-        pilih = int(input("Masukkan pilihan anda: "))
+        print("+==================================+")
+        print("|          KONVERSI OKTAL          |")
+        print("+==================================+")
+        print("| [1] Oktal ke Desimal             |")
+        print("| [2] Oktal ke Biner               |")
+        print("| [3] Oktal ke Heksadesimal        |")
+        print("| [4] Kembali                      |")
+        print("+==================================+")
+        pilih = int(input("Masukkan pilihan anda =>> "))
         if pilih == 1:
             oct_dec()
         elif pilih == 2:
@@ -79,14 +89,15 @@ def submain(to):
             print("\nPilihan tidak ada!")
             submain(to)
     elif to == decs:
-        print("\nKONVERSI DESIMAL")
-        print("===============")
-        print("1. Desimal ke Biner")
-        print("2. Desimal ke Oktal")
-        print("3. Desimal ke Hexadesimal")
-        print("4. Kembali")
-        print("===============")
-        pilih = int(input("Masukkan pilihan anda: "))
+        print("+==================================+")
+        print("|         KONVERSI DESIMAL         |")
+        print("+==================================+")
+        print("| [1] Desimal ke Biner             |")
+        print("| [2] Desimal ke Oktal             |")
+        print("| [3] Desimal ke Heksadesimal      |")
+        print("| [4] Kembali                      |")
+        print("+==================================+")
+        pilih = int(input("Masukkan pilihan anda =>> "))
         if pilih == 1:
             dec_bin()
         elif pilih == 2:
@@ -99,14 +110,15 @@ def submain(to):
             print("\nPilihan tidak ada!")
             submain(to)
     elif to == hexs:
-        print("\nKONVERSI HEXADESIMAL")
-        print("====================")
-        print("1. Hexadesimal ke Desimal")
-        print("2. Hexadesimal ke Biner")
-        print("3. Hexadesimal ke Oktal")
-        print("4. Kembali")
-        print("====================")
-        pilih = int(input("Masukkan pilihan anda: "))
+        print("+==================================+")
+        print("|       KONVERSI HEKSADESIMAL      |")
+        print("+==================================+")
+        print("| [1] Heksadesimal ke Desimal      |")
+        print("| [2] Heksadesimal ke Biner        |")
+        print("| [3] Heksadesimal ke Oktal        |")
+        print("| [4] Kembali                      |")
+        print("+==================================+")
+        pilih = int(input("Masukkan pilihan anda =>> "))
         if pilih == 1:
             hex_dec()
         elif pilih == 2:
@@ -146,7 +158,11 @@ def bin_dec():
     print("------------------------------------------")
     print(f"+==> Hasil dari biner {inputan} adalah {hasilAkhir} = {desimal} Desimal")
     print("+-------------------------------------------------------------------------------------+")
-    submain(bins)
+    opt = input("LANJUT Konversi Biner ke Desimal? y/N :  ").upper()
+    if opt == "Y":
+        bin_dec()
+    elif opt == "N":
+        submain(bins)
 
 def bin_oct():
     print("+============[Binary to Octal]============+")
@@ -191,7 +207,11 @@ def bin_oct():
         print("[!] TYPE ERROR")
         exit(0)
     print("+-------------------------------------------------------------------------------------+")
-    submain(bins)
+    opt = input("LANJUT Konversi Biner ke Oktal? y/N :  ").upper()
+    if opt == "Y":
+        bin_oct()
+    elif opt == "N":
+        submain(bins)
 
 def bin_hex():
     print("+============[Binary to Hexadecimal]============+")
@@ -226,7 +246,11 @@ def bin_hex():
             print(f"{desimal} sisa {vv} -> dalam hex :: {hex(int(vv))}")
     print(f"\n+==> Dan Hasil Akhir Konversi dari {inputan} Biner adalah {hasil[::-1]} Hexa")
     print("+-------------------------------------------------------------------------------------+")
-    submain(bins)
+    opt = input("LANJUT Konversi Biner ke Heksadesimal? y/N :  ").upper()
+    if opt == "Y":
+        bin_hex()
+    elif opt == "N":
+        submain(bins)
 
 
 # OCTAL
@@ -252,7 +276,11 @@ def oct_dec():
     print("------------------------------------------")
     print(f"+==> Hasil dari Oktal {inputan} adalah {hasilAkhir} = {desimal} Desimal")
     print("+-------------------------------------------------------------------------------------+")
-    submain(octs)
+    opt = input("LANJUT Konversi Oktal ke Desimal? y/N :  ").upper()
+    if opt == "Y":
+        oct_dec()
+    elif opt == "N":
+        submain(octs)
 
 def oct_bin():
     print("+============[Octal to Binary]============+")
@@ -322,7 +350,11 @@ def oct_bin():
         print("\nInvalid Input!")
         exit(0)
     print("+-------------------------------------------------------------------------------------+")
-    submain(octs)
+    opt = input("LANJUT Konversi Oktal ke Biner? y/N :  ").upper()
+    if opt == "Y":
+        oct_bin()
+    elif opt == "N":
+        submain(octs)
 
 def oct_hex():
     print("+============[Octal to Hexadecimal]============+")
@@ -413,7 +445,11 @@ def oct_hex():
     print("----------------------------------------------------------------------------------------")
     print(f"+==> Dan hasil akhir dari {inputan} Oktal adalah :: {hasilAkhir} dalam Heksadesimal")
     print("+-------------------------------------------------------------------------------------+")
-    submain(octs)
+    opt = input("LANJUT Konversi Oktal ke Heksadesimal? y/N :  ").upper()
+    if opt == "Y":
+        oct_hex()
+    elif opt == "N":
+        submain(octs)
 
 
 # DECIMAL
@@ -443,7 +479,11 @@ def dec_bin():
 
     print(f"Hasil Konversi dari {inputan} Desimal adalah {hasilAkhir} Binary")
     print("+-------------------------------------------------------------------------------------+")
-    submain(decs)
+    opt = input("LANJUT Konversi Desimal ke Biner? y/N :  ").upper()
+    if opt == "Y":
+        dec_bin()
+    elif opt == "N":
+        submain(decs)
 
 def dec_oct():
     print("+============[Decimal to Octal]============+")
