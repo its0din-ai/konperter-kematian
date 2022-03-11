@@ -234,7 +234,7 @@ def bin_hex():
 # OCTAL
 def oct_dec():
     print("+============[Octal to Decimal]============+")
-    inputan = str(input("Masukkan bilangan Biner: "))
+    inputan = str(input("Masukkan bilangan Oktal tanpa Spacing: "))
     print("+-------------------------------------------------------------------------------------+")
     rev = inputan[::-1]
     desimal = 0
@@ -258,30 +258,163 @@ def oct_dec():
 
 def oct_bin():
     print("+============[Octal to Binary]============+")
-    inputan = str(input("Masukkan bilangan Biner: "))
+    inputan = str(input("Masukkan bilangan Oktal tanpa Spacing: "))
     print("+-------------------------------------------------------------------------------------+")
-    rev = inputan[::-1]
-    desimal = 0
-    arrr = list(rev.strip(" "))
-    mult = []
-    way = []
-    for i in range(0, len(rev)):
-        axx = int(rev[i])
-        kalkul = axx*8**i
-        desimal += kalkul
-        mult.append(f"{kalkul}")
-        way.append(f"({rev[i]}x8)^{i}")
+    rev = 0
+    chk = 0
+    inputanint = int(inputan)
 
-    hasilAkhir = "+".join(mult[::-1])
-    table = [arrr[::-1], way[::-1], mult[::-1]]
-    print(tabulate(table, tablefmt='fancy_grid'))
-    print("------------------------------------------")
-    print(f"Hasil dari Oktal {inputan} adalah {hasilAkhir} = {desimal} Desimal")
+    while inputanint!=0:
+        rem = inputanint%10
+        if rem>7:
+            chk = 1
+            break
+        rev = rem + (rev*10)
+        inputanint = int(inputanint/10)
+
+    if chk == 0:
+        inputanint = rev
+        binnum = ""
+
+        while inputanint!=0:
+            rem = inputanint%10
+            if rem==0:
+                binnum = binnum + "000"
+            elif rem==1:
+                binnum = binnum + "001"
+            elif rem==2:
+                binnum = binnum + "010"
+            elif rem==3:
+                binnum = binnum + "011"
+            elif rem==4:
+                binnum = binnum + "100"
+            elif rem==5:
+                binnum = binnum + "101"
+            elif rem==6:
+                binnum = binnum + "110"
+            elif rem==7:
+                binnum = binnum + "111"
+            inputanint = int(inputanint/10)
+
+        arr = list(map(( lambda x: ' ' + x + ' '), inputan))
+        bintabs = list(map(''.join, zip(*[iter(binnum)]*3)))
+        if len(binnum) % 4 == 0:
+            akhirs = list(map(''.join, zip(*[iter(binnum)]*4)))
+            akhir = " ".join(akhirs)
+        elif len(binnum) % 4 == 1:
+            binnums = "0" * 3 + binnum
+            akhirs = list(map(''.join, zip(*[iter(binnums)]*4)))
+            akhir = " ".join(akhirs)
+        elif len(binnum) % 4 == 2:
+            binnums = "0" * 2 + binnum
+            akhirs = list(map(''.join, zip(*[iter(binnums)]*4)))
+            akhir = " ".join(akhirs)
+        elif len(binnum) % 4 == 3:
+            binnums = "0" * 1 + binnum
+            akhirs = list(map(''.join, zip(*[iter(binnums)]*4)))
+            akhir = " ".join(akhirs)
+
+
+        table = [arr, bintabs]
+        print(tabulate(table, tablefmt='fancy_grid'))
+        print(f"\nLalu kita ubah {binnum} menjadi 4 kelompok, dan hasilnya {akhir}")
+        print(f"+==> Hasil dari Oktal {inputan} adalah {akhir} Biner")
+
+    else:
+        print("\nInvalid Input!")
+        exit(0)
     print("+-------------------------------------------------------------------------------------+")
     submain(octs)
 
 def oct_hex():
     print("+============[Octal to Hexadecimal]============+")
+    inputan = str(input("Masukkan bilangan Oktal tanpa Spacing: "))
+    print("+-------------------------------------------------------------------------------------+")
+    rev = 0
+    chk = 0
+    inputanint = int(inputan)
+
+    while inputanint!=0:
+        rem = inputanint%10
+        if rem>7:
+            chk = 1
+            break
+        rev = rem + (rev*10)
+        inputanint = int(inputanint/10)
+
+    if chk == 0:
+        inputanint = rev
+        binnum = ""
+
+        while inputanint!=0:
+            rem = inputanint%10
+            if rem==0:
+                binnum = binnum + "000"
+            elif rem==1:
+                binnum = binnum + "001"
+            elif rem==2:
+                binnum = binnum + "010"
+            elif rem==3:
+                binnum = binnum + "011"
+            elif rem==4:
+                binnum = binnum + "100"
+            elif rem==5:
+                binnum = binnum + "101"
+            elif rem==6:
+                binnum = binnum + "110"
+            elif rem==7:
+                binnum = binnum + "111"
+            inputanint = int(inputanint/10)
+
+        arr = list(map(( lambda x: ' ' + x + ' '), inputan))
+        bintabs = list(map(''.join, zip(*[iter(binnum)]*3)))
+        if len(binnum) % 4 == 0:
+            binnums = binnum
+            akhirs = list(map(''.join, zip(*[iter(binnums)]*4)))
+            akhir = " ".join(akhirs)
+        elif len(binnum) % 4 == 1:
+            binnums = "0" * 3 + binnum
+            akhirs = list(map(''.join, zip(*[iter(binnums)]*4)))
+            akhir = " ".join(akhirs)
+        elif len(binnum) % 4 == 2:
+            binnums = "0" * 2 + binnum
+            akhirs = list(map(''.join, zip(*[iter(binnums)]*4)))
+            akhir = " ".join(akhirs)
+        elif len(binnum) % 4 == 3:
+            binnums = "0" * 1 + binnum
+            akhirs = list(map(''.join, zip(*[iter(binnums)]*4)))
+            akhir = " ".join(akhirs)
+
+        print("Kita ubah Oktal menjadi Biner terlebih dahulu")
+        table = [arr, bintabs]
+        print(tabulate(table, tablefmt='fancy_grid'))
+        print("----------------------------------------------------------------------------------------")
+        print(f"Hasil dari Oktal {inputan} adalah {akhir} Biner")
+        print("----------------------------------------------------------------------------------------")
+        
+
+    else:
+        print("\nInvalid Input!")
+        exit(0)
+    # ----------
+    bnum = int(binnums, 2)
+    desimal = 0
+    desimal += bnum
+    hasil  = ""
+    while desimal != 0:
+        while desimal % 16 != 0:
+            vv = desimal % 16
+            desimal = desimal // 16
+            hasil += str(hex(int(vv)).replace("0x","").upper())
+
+    hexnum = hasil[::-1]
+    hasilAkhir = "".join(hexnum)
+    print("Lalu Kita ubah Biner menjadi Heksadesimal")
+    table = [akhirs, hexnum]
+    print(tabulate(table, tablefmt='fancy_grid'))
+    print("----------------------------------------------------------------------------------------")
+    print(f"Dan hasil akhir dari {inputan} Oktal adalah :: {hasilAkhir}")
+    print("+-------------------------------------------------------------------------------------+")
     submain(octs)
 
 
