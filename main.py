@@ -21,7 +21,7 @@ def main():
     print("| [2] Oktal                        |")
     print("| [3] Desimal                      |")
     print("| [4] Heksadesimal                 |")
-    print("| [5] Keluar                       |")
+    print("| [0] Keluar                       |")
     print("+==================================+")
     pilih = int(input("Masukkan pilihan anda =>> "))
     print(pilih)
@@ -37,7 +37,7 @@ def main():
     elif pilih == 4:
         os.system('cls' if os.name == 'nt' else 'clear')
         submain(hexs)
-    elif pilih == 5:
+    elif pilih == 0:
         os.system('cls' if os.name == 'nt' else 'clear')
         exit(0)
     else:
@@ -52,7 +52,10 @@ def submain(to):
         print("| [1] Biner ke Desimal             |")
         print("| [2] Biner ke Oktal               |")
         print("| [3] Biner ke Heksadesimal        |")
-        print("| [4] Kembali                      |")
+        print("|     Pilihan ini Khusus untuk     |")
+        print("| [4] bilangan Biner negatif atau  |")
+        print("|     dibelakang Koma              |")
+        print("| [0] Kembali                      |")
         print("+==================================+")
         pilih = int(input("Masukkan pilihan anda =>> "))
         if pilih == 1:
@@ -62,6 +65,8 @@ def submain(to):
         elif pilih == 3:
             bin_hex()
         elif pilih == 4:
+            print("Untuk Bilangan Negatif. soon")
+        elif pilih == 0:
             main()
         else:
             print("\nPilihan tidak ada!")
@@ -73,7 +78,10 @@ def submain(to):
         print("| [1] Oktal ke Desimal             |")
         print("| [2] Oktal ke Biner               |")
         print("| [3] Oktal ke Heksadesimal        |")
-        print("| [4] Kembali                      |")
+        print("|     Pilihan ini Khusus untuk     |")
+        print("| [4] bilangan Biner negatif atau  |")
+        print("|     dibelakang Koma              |")
+        print("| [0] Kembali                      |")
         print("+==================================+")
         pilih = int(input("Masukkan pilihan anda =>> "))
         if pilih == 1:
@@ -83,6 +91,8 @@ def submain(to):
         elif pilih == 3:
             oct_hex()
         elif pilih == 4:
+            print("Untuk Bilangan Negatif. soon")
+        elif pilih == 0:
             main()
         else:
             print("\nPilihan tidak ada!")
@@ -94,7 +104,10 @@ def submain(to):
         print("| [1] Desimal ke Biner             |")
         print("| [2] Desimal ke Oktal             |")
         print("| [3] Desimal ke Heksadesimal      |")
-        print("| [4] Kembali                      |")
+        print("|     Pilihan ini Khusus untuk     |")
+        print("| [4] bilangan Biner negatif atau  |")
+        print("|     dibelakang Koma              |")
+        print("| [0] Kembali                      |")
         print("+==================================+")
         pilih = int(input("Masukkan pilihan anda =>> "))
         if pilih == 1:
@@ -104,6 +117,8 @@ def submain(to):
         elif pilih == 3:
             dec_hex()
         elif pilih == 4:
+            print("Untuk Bilangan Negatif. soon")
+        elif pilih == 0:
             main()
         else:
             print("\nPilihan tidak ada!")
@@ -115,7 +130,10 @@ def submain(to):
         print("| [1] Heksadesimal ke Desimal      |")
         print("| [2] Heksadesimal ke Biner        |")
         print("| [3] Heksadesimal ke Oktal        |")
-        print("| [4] Kembali                      |")
+        print("|     Pilihan ini Khusus untuk     |")
+        print("| [4] bilangan Biner negatif atau  |")
+        print("|     dibelakang Koma              |")
+        print("| [0] Kembali                      |")
         print("+==================================+")
         pilih = int(input("Masukkan pilihan anda =>> "))
         if pilih == 1:
@@ -125,6 +143,8 @@ def submain(to):
         elif pilih == 3:
             hex_oct()
         elif pilih == 4:
+            print("Untuk Bilangan Negatif. soon")
+        elif pilih == 0:
             main()
         else:
             print("\nPilihan tidak ada!")
@@ -592,16 +612,8 @@ def hex_oct():
     print("+============[Hexadecimal to Octal]============+")
     submain(hexs)
 
-
-
-
-
-
-
-
-
-
-
-
 if __name__ == "__main__":
     main()
+
+
+
