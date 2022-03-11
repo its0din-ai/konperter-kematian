@@ -1,5 +1,6 @@
 #!/usr/bin/python
 import os
+from urllib.request import HTTPBasicAuthHandler
 from tabulate import tabulate
 
 version = "0.4-dev"
@@ -8,8 +9,6 @@ bins = "biner"
 octs = "oktal"
 decs = "desimal"
 hexs = "hexa"
-
-
 
 def main():
     os.system('cls' if os.name == 'nt' else 'clear')
@@ -175,9 +174,23 @@ def bin_oct():
             hasil += oct(int(jobss[i], 2))[2:]
         hasilAkhir = list(map(( lambda x: ' ' + x + ' '), hasil))
 
+        if len(hasil) % 3 == 2:
+            fn = hasil[0:2]
+            xx = hasil[2:len(hasil)]
+            hass = list(map(''.join, zip(*[iter(xx)]*3)))
+            finals = fn + " " + " ".join(hass)
+        elif len(hasil) % 3 == 1:
+            fn = hasil[0:1]
+            xx = hasil[1:len(hasil)]
+            hass = list(map(''.join, zip(*[iter(xx)]*3)))
+            finals = fn + " " + " ".join(hass)
+        elif len(hasil) % 3 == 0:
+            hass = list(map(''.join, zip(*[iter(hasil)]*3)))
+            finals = " ".join(hass)
+
         table = [[jobss, "rad-2"], [hasilAkhir, "rad-8"]]
         print(tabulate(table, tablefmt='fancy_grid'))
-        print(f"+==> Hasil Biner {inputan} dalam Oktal adalah {hasil}")
+        print(f"+==> Hasil Biner {inputan} dalam Oktal adalah {finals}")
 
     elif len(inputan) % 3 == 2:
         bint = "0" + inputan
@@ -187,9 +200,24 @@ def bin_oct():
             hasil += oct(int(jobss[i], 2))[2:]
         hasilAkhir = list(map(( lambda x: ' ' + x + ' '), hasil))
 
+        if len(hasil) % 3 == 2:
+            fn = hasil[0:2]
+            xx = hasil[2:len(hasil)]
+            hass = list(map(''.join, zip(*[iter(xx)]*3)))
+            finals = fn + " " + " ".join(hass)
+        elif len(hasil) % 3 == 1:
+            fn = hasil[0:1]
+            xx = hasil[1:len(hasil)]
+            hass = list(map(''.join, zip(*[iter(xx)]*3)))
+            finals = fn + " " + " ".join(hass)
+        elif len(hasil) % 3 == 0:
+            hass = list(map(''.join, zip(*[iter(hasil)]*3)))
+            finals = " ".join(hass)
+
+
         table = [[jobss, "rad-2"], [hasilAkhir, "rad-8"]]
         print(tabulate(table, tablefmt='fancy_grid'))
-        print(f"+==> Hasil Biner {inputan} dalam Oktal adalah {hasil}")
+        print(f"+==> Hasil Biner {inputan} dalam Oktal adalah {finals}")
 
     elif len(inputan) % 3 == 1:
         bint = "00" + inputan
@@ -199,9 +227,23 @@ def bin_oct():
             hasil += oct(int(jobss[i], 2))[2:]
         hasilAkhir = list(map(( lambda x: ' ' + x + ' '), hasil))
 
+        if len(hasil) % 3 == 2:
+            fn = hasil[0:2]
+            xx = hasil[2:len(hasil)]
+            hass = list(map(''.join, zip(*[iter(xx)]*3)))
+            finals = fn + " " + " ".join(hass)
+        elif len(hasil) % 3 == 1:
+            fn = hasil[0:1]
+            xx = hasil[1:len(hasil)]
+            hass = list(map(''.join, zip(*[iter(xx)]*3)))
+            finals = fn + " " + " ".join(hass)
+        elif len(hasil) % 3 == 0:
+            hass = list(map(''.join, zip(*[iter(hasil)]*3)))
+            finals = " ".join(hass)
+
         table = [[jobss, "rad-2"], [hasilAkhir, "rad-8"]]
         print(tabulate(table, tablefmt='fancy_grid'))
-        print(f"+==> Hasil Biner {inputan} dalam Oktal adalah {hasil}")
+        print(f"+==> Hasil Biner {inputan} dalam Oktal adalah {finals}")
 
     else:
         print("[!] TYPE ERROR")
@@ -499,11 +541,20 @@ def dec_oct():
         hasil += str(int(vv)).upper()
         print(f"{desimal} sisa {vv}")
 
-    if len(hasil) < 3:
-        xyz = hasil[::-1]
-        hasilAkhir = "0"*(3 - len(hasil)) + xyz
-    else:
-        hasilAkhir = hasil[::-1]
+    rever = hasil[::-1]
+    if len(rever) % 3 == 2:
+        fn = rever[0:2]
+        xx = rever[2:len(rever)]
+        hass = list(map(''.join, zip(*[iter(xx)]*3)))
+        hasilAkhir = fn + " " + " ".join(hass)
+    elif len(rever) % 3 == 1:
+        fn = rever[0:1]
+        xx = rever[1:len(rever)]
+        hass = list(map(''.join, zip(*[iter(xx)]*3)))
+        hasilAkhir = fn + " " + " ".join(hass)
+    elif len(rever) % 3 == 0:
+        hass = list(map(''.join, zip(*[iter(rever)]*3)))
+        hasilAkhir = " ".join(hass)
 
     print(f"Hasil Konversi dari {inputan} Desimal adalah {hasilAkhir} Octal")
     print("+-------------------------------------------------------------------------------------+")
