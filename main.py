@@ -144,7 +144,7 @@ def bin_dec():
     table = [arrr[::-1], way[::-1], mult[::-1]]
     print(tabulate(table, tablefmt='fancy_grid'))
     print("------------------------------------------")
-    print(f"Hasil dari biner {inputan} adalah {hasilAkhir} = {desimal} Desimal")
+    print(f"+==> Hasil dari biner {inputan} adalah {hasilAkhir} = {desimal} Desimal")
     print("+-------------------------------------------------------------------------------------+")
     submain(bins)
 
@@ -161,7 +161,7 @@ def bin_oct():
 
         table = [[jobss, "rad-2"], [hasilAkhir, "rad-8"]]
         print(tabulate(table, tablefmt='fancy_grid'))
-        print(f"Biner {inputan} dalam Oktal adalah {hasil}")
+        print(f"+==> Hasil Biner {inputan} dalam Oktal adalah {hasil}")
 
     elif len(inputan) % 3 == 2:
         bint = "0" + inputan
@@ -173,7 +173,7 @@ def bin_oct():
 
         table = [[jobss, "rad-2"], [hasilAkhir, "rad-8"]]
         print(tabulate(table, tablefmt='fancy_grid'))
-        print(f"Biner {inputan} dalam Oktal adalah {hasil}")
+        print(f"+==> Hasil Biner {inputan} dalam Oktal adalah {hasil}")
 
     elif len(inputan) % 3 == 1:
         bint = "00" + inputan
@@ -185,7 +185,7 @@ def bin_oct():
 
         table = [[jobss, "rad-2"], [hasilAkhir, "rad-8"]]
         print(tabulate(table, tablefmt='fancy_grid'))
-        print(f"Biner {inputan} dalam Oktal adalah {hasil}")
+        print(f"+==> Hasil Biner {inputan} dalam Oktal adalah {hasil}")
 
     else:
         print("[!] TYPE ERROR")
@@ -224,9 +224,7 @@ def bin_hex():
             desimal = desimal // 16
             hasil += str(hex(int(vv)).replace("0x","").upper())
             print(f"{desimal} sisa {vv} -> dalam hex :: {hex(int(vv))}")
-    print(f"\nHasil Konversi dari {inputan} Biner adalah {hasil[::-1]} Hexa")
-
-
+    print(f"\n+==> Dan Hasil Akhir Konversi dari {inputan} Biner adalah {hasil[::-1]} Hexa")
     print("+-------------------------------------------------------------------------------------+")
     submain(bins)
 
@@ -252,7 +250,7 @@ def oct_dec():
     table = [arrr[::-1], way[::-1], mult[::-1]]
     print(tabulate(table, tablefmt='fancy_grid'))
     print("------------------------------------------")
-    print(f"Hasil dari Oktal {inputan} adalah {hasilAkhir} = {desimal} Desimal")
+    print(f"+==> Hasil dari Oktal {inputan} adalah {hasilAkhir} = {desimal} Desimal")
     print("+-------------------------------------------------------------------------------------+")
     submain(octs)
 
@@ -389,7 +387,7 @@ def oct_hex():
         table = [arr, bintabs]
         print(tabulate(table, tablefmt='fancy_grid'))
         print("----------------------------------------------------------------------------------------")
-        print(f"Hasil dari Oktal {inputan} adalah {akhir} Biner")
+        print(f"=> Hasil dari Oktal {inputan} adalah {akhir} Biner")
         print("----------------------------------------------------------------------------------------")
         
 
@@ -413,7 +411,7 @@ def oct_hex():
     table = [akhirs, hexnum]
     print(tabulate(table, tablefmt='fancy_grid'))
     print("----------------------------------------------------------------------------------------")
-    print(f"Dan hasil akhir dari {inputan} Oktal adalah :: {hasilAkhir}")
+    print(f"+==> Dan hasil akhir dari {inputan} Oktal adalah :: {hasilAkhir} dalam Heksadesimal")
     print("+-------------------------------------------------------------------------------------+")
     submain(octs)
 
