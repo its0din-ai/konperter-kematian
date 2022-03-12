@@ -13,9 +13,9 @@ if True:
     print("\n=========================================================================")
     print("Cheking for Update")
     print("========================================================================")
-    subprocess.check_output("python ./updater.py)", shell=True)
+    # subprocess.check_output("python ./updater.py)", shell=True)
     for j in range(1,101):
-        time.sleep(.04)
+        time.sleep(.02)
         downloading = "[CHECKING]"
         percentage = f"[{j}%]"
         bar = '|' * j
