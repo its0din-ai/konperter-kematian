@@ -11,9 +11,14 @@ octs = "oktal"
 decs = "desimal"
 hexs = "hexa"
 
-def main():
-    os.system('cls' if os.name == 'nt' else 'clear')
-    subprocess.check_output("python ./updater.py", shell=True)
+isRunning = 0
+
+def main(isRunning = 0):
+    if isRunning == 0:
+        os.system('cls' if os.name == 'nt' else 'clear')
+        subprocess.check_output("python ./updater.py", shell=True)
+        isRunning += 1
+    
     os.system('cls' if os.name == 'nt' else 'clear')
     cprint("+==================================+", 'red', attrs=['bold'])
     cprint("|        KONVERTER BILANGAN        |", 'red', attrs=['bold'])
@@ -44,7 +49,7 @@ def main():
         exit(0)
     else:
         print("\nPilihan Tidak Tersedia.!!")
-        main()
+        main(isRunning = 1)
 
 def submain(to):
     if to == bins:
@@ -69,7 +74,7 @@ def submain(to):
         elif pilih == 4:
             print("Untuk Bilangan Negatif. soon")
         elif pilih == 0:
-            main()
+            main(isRunning = 1)
         else:
             print("\nPilihan tidak ada!")
             submain(to)
@@ -95,7 +100,7 @@ def submain(to):
         elif pilih == 4:
             print("Untuk Bilangan Negatif. soon")
         elif pilih == 0:
-            main()
+            main(isRunning = 1)
         else:
             print("\nPilihan tidak ada!")
             submain(to)
@@ -121,7 +126,7 @@ def submain(to):
         elif pilih == 4:
             print("Untuk Bilangan Negatif. soon")
         elif pilih == 0:
-            main()
+            main(isRunning = 1)
         else:
             print("\nPilihan tidak ada!")
             submain(to)
@@ -147,13 +152,13 @@ def submain(to):
         elif pilih == 4:
             print("Untuk Bilangan Negatif. soon")
         elif pilih == 0:
-            main()
+            main(isRunning = 1)
         else:
             print("\nPilihan tidak ada!")
             submain(to)
     else:
         print("\nPilihan tidak ada!")
-        main()
+        main(isRunning = 1)
 
 
 # BINARY
@@ -187,6 +192,8 @@ def bin_dec():
     if opt == "Y":
         bin_dec()
     elif opt == "N":
+        submain(bins)
+    else:
         submain(bins)
 
 def bin_oct():
@@ -280,6 +287,8 @@ def bin_oct():
         bin_oct()
     elif opt == "N":
         submain(bins)
+    else:
+        submain(bins)
 
 def bin_hex():
     print("+============[Binary to Hexadecimal]============+")
@@ -319,6 +328,8 @@ def bin_hex():
         bin_hex()
     elif opt == "N":
         submain(bins)
+    else:
+        submain(bins)
 
 
 # OCTAL
@@ -348,6 +359,8 @@ def oct_dec():
     if opt == "Y":
         oct_dec()
     elif opt == "N":
+        submain(octs)
+    else:
         submain(octs)
 
 def oct_bin():
@@ -422,6 +435,8 @@ def oct_bin():
     if opt == "Y":
         oct_bin()
     elif opt == "N":
+        submain(octs)
+    else:
         submain(octs)
 
 def oct_hex():
@@ -518,6 +533,8 @@ def oct_hex():
         oct_hex()
     elif opt == "N":
         submain(octs)
+    else:
+        submain(octs)
 
 
 # DECIMAL
@@ -552,6 +569,8 @@ def dec_bin():
         dec_bin()
     elif opt == "N":
         submain(decs)
+    else:
+        submain(decs)
 
 def dec_oct():
     print("+============[Decimal to Octal]============+")
@@ -584,7 +603,13 @@ def dec_oct():
 
     print(f"Hasil Konversi dari {inputan} Desimal adalah {hasilAkhir} Octal")
     print("+-------------------------------------------------------------------------------------+")
-    submain(decs)
+    opt = input("LANJUT Konversi Desimal ke Oktal? y/N :  ").upper()
+    if opt == "Y":
+        dec_oct()
+    elif opt == "N":
+        submain(decs)
+    else:
+        submain(decs)
 
 def dec_hex():
     print("+============[Decimal to Hexadecimal]============+")
@@ -602,19 +627,38 @@ def dec_hex():
             print(f"{desimal} sisa {vv} -> dalam hex :: {hex(int(vv))}")
     print(f"Hasil Konversi dari {inputan} Desimal adalah {hasil[::-1]} Hexa")
     print("+-------------------------------------------------------------------------------------+")
-    submain(decs)
+    opt = input("LANJUT Konversi Desimal ke Heksadesimal? y/N :  ").upper()
+    if opt == "Y":
+        dec_hex()
+    elif opt == "N":
+        submain(decs)
+    else:
+        submain(decs)
 
 
 # HEXADECIMAL
 def hex_dec():
     print("+============[Hexadecimal to Decimal]============+")
-    inputan = str(input("Masukkan bilangan Heksadesimal tanpa spacing: "))
+    inputan = str(input("Masukkan bilangan Heksadesimal tanpa spacing: ")).upper()
     print("+-------------------------------------------------------------------------------------+")
-
-
-    rev = inputan[::-1]
     desimal = 0
-    arrr = list(rev.strip(" "))
+    arrr = list(inputan.strip(" "))
+    oldstr = arrr
+    newstrr = []
+    hexalph = {"A": "10", "B":"11", "C":"12", "D":"l3", "E":"14", "F":"15"}
+
+    i = 0
+    for strng in oldstr:
+        if strng.isdigit():
+            newstrr += strng
+        else:
+            newstr = strng.replace(strng, hexalph[strng])
+            newstrr.append(newstr)
+        i += 1
+
+    rev = newstrr[::-1]
+
+
     mult = []
     way = []
     for i in range(0, len(rev)):
@@ -622,34 +666,88 @@ def hex_dec():
         kalkul = axx*16**i
         desimal += kalkul
         mult.append(f"{kalkul}")
-        way.append(f"({rev[i]}x16)^{i}")
+        way.append(f"({newstrr[i]}x16)^{i}")
 
     hasilAkhir = "+".join(mult)
     # TABLE
-    table = [arrr[::-1], way[::-1], mult[::-1]]
+    table = [arrr, way, mult]
     cprint(tabulate(table, tablefmt='fancy_grid'), 'yellow')
     # OUTPUT - GLOBAL COLORS
     inputanWrn = colored(f"{inputan}", 'yellow', attrs=['bold', 'underline'])
     akhirWrn = colored(f"{hasilAkhir}", 'yellow', attrs=['underline'])
     desimalWrn = colored(f"{desimal}", 'yellow', attrs=['bold', 'underline'])
-    print(f"\n+==> Hasil dari biner {inputanWrn} adalah {akhirWrn} = {desimalWrn} Desimal")
+    print(f"\n+==> Hasil dari Heksa {inputanWrn} adalah {akhirWrn} = {desimalWrn} Desimal")
     print("+-------------------------------------------------------------------------------------+")
-    opt = input("LANJUT Konversi Biner ke Desimal? y/N :  ").upper()
+    opt = input("LANJUT Konversi Heksa ke Desimal? y/N :  ").upper()
     if opt == "Y":
-        bin_dec()
+        hex_dec()
     elif opt == "N":
+        submain(hexs)
+    else:
         submain(hexs)
 
 def hex_bin():
     print("+============[Hexadecimal to Binary]============+")
-    submain(hexs)
+    inputan = str(input("Masukkan bilangan Heksadesimal tanpa spacing: ")).upper()
+    print("+-------------------------------------------------------------------------------------+")
+    arrr = list(inputan.strip(" "))
+    oldstr = arrr
+    newstrr = []
+    hexalph = {
+        "0": "0000",
+        "1": "0001",
+        "2": "0010",
+        "3": "0011",
+        "4": "0100",
+        "5": "0101",
+        "6": "0110",
+        "7": "0111",
+        "8": "1000",
+        "9": "1001",
+        "A": "1010",
+        "B": "1011",
+        "C": "1100",
+        "D": "1101",
+        "E": "1110",
+        "F": "1111"
+        }
+
+    i = 0
+    for strng in oldstr:
+        newstr = strng.replace(strng, hexalph[strng])
+        newstrr.append(newstr)
+        i += 1
+
+    akhir = " ".join(newstrr)
+    # TABLE
+    table = [arrr, newstrr]
+    cprint(tabulate(table, tablefmt='fancy_grid'), 'yellow')
+    # OUTPUT - GLOBAL COLORS
+    inputanWrn = colored(f"{inputan}", 'yellow', attrs=['bold', 'underline'])
+    desimalWrn = colored(f"{akhir}", 'yellow', attrs=['bold', 'underline'])
+    print(f"\n+==> Hasil dari Heksa {inputanWrn} adalah {desimalWrn} Desimal")
+    print("+-------------------------------------------------------------------------------------+")
+    opt = input("LANJUT Konversi Heksa ke Biner? y/N :  ").upper()
+    if opt == "Y":
+        hex_bin()
+    elif opt == "N":
+        submain(hexs)
+    else:
+        submain(hexs)
 
 def hex_oct():
     print("+============[Hexadecimal to Octal]============+")
-    submain(hexs)
+    print("+-------------------------------------------------------------------------------------+")
+    opt = input("LANJUT Konversi Heksa ke Oktal? y/N :  ").upper()
+    if opt == "Y":
+        hex_oct()
+    elif opt == "N":
+        submain(hexs)
+    else:
+        submain(hexs)
 
 if __name__ == "__main__":
-    main()
+    main(isRunning = 0)
 
 
 
