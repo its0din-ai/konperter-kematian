@@ -1,6 +1,5 @@
 #!/usr/bin/python
-import os
-import subprocess
+import os, subprocess
 from tabulate import tabulate
 from termcolor import colored, cprint
 

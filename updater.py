@@ -1,3 +1,4 @@
+#!/usr/bin/python
 import subprocess
 
 subprocess.check_output("git fetch", shell=True)

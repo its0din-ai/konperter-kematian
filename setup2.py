@@ -1,6 +1,5 @@
-import time
-import os
-import subprocess
+#!/usr/bin/python
+import time, os, subprocess
 from alive_progress import alive_bar
 
 verr = str(subprocess.check_output("python --version", shell=True).decode()).replace('\n', '')
