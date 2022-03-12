@@ -220,7 +220,7 @@ def bin_oct():
             hass = list(map(''.join, zip(*[iter(hasil)]*3)))
             finals = " ".join(hass)
 
-        table = [[jobss, "rad-2"], [hasilAkhir, "rad-8"]]
+        table = [[jobss, "biner"], [hasilAkhir, "oktal"]]
         print(tabulate(table, tablefmt='fancy_grid'))
         print(f"+==> Hasil Biner {inputan} dalam Oktal adalah {finals}")
 
@@ -247,7 +247,7 @@ def bin_oct():
             finals = " ".join(hass)
 
 
-        table = [[jobss, "rad-2"], [hasilAkhir, "rad-8"]]
+        table = [[jobss, "biner"], [hasilAkhir, "oktal"]]
         print(tabulate(table, tablefmt='fancy_grid'))
         print(f"+==> Hasil Biner {inputan} dalam Oktal adalah {finals}")
 
@@ -273,7 +273,7 @@ def bin_oct():
             hass = list(map(''.join, zip(*[iter(hasil)]*3)))
             finals = " ".join(hass)
 
-        table = [[jobss, "rad-2"], [hasilAkhir, "rad-8"]]
+        table = [[jobss, "biner"], [hasilAkhir, "oktal"]]
         print(tabulate(table, tablefmt='fancy_grid'))
         print(f"+==> Hasil Biner {inputan} dalam Oktal adalah {finals}")
 
