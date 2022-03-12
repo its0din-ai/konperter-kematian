@@ -6,8 +6,17 @@ import subprocess
 verr = str(subprocess.check_output("python --version", shell=True).decode()).replace('\n', '')
 verrP = str(subprocess.check_output("pip --version", shell=True).decode()).replace('\n', '')
 
-# verrs = str(verr.decode("utf-8")).replace('\n', '')
-# verrsP = str(verrP.decode("utf-8")).replace('\n', '')
+print("Checing for Update")
+subprocess.check_output("git fetch", shell=True)
+subprocess.check_output("git pull", shell=True)
+for j in range(1,101):
+    time.sleep(.02)
+    downloading = "[Loading]"
+    percentage = f"[{j}%]"
+    bar = '|' * j
+    color = downloading + bar + percentage
+    print(color, end="\r")
+print("\n", end="\n")
 
 
 if "Python 3" in verr:
