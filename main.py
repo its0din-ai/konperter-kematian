@@ -1,6 +1,6 @@
 #!/usr/bin/python
 import os
-import sys
+import subprocess
 from tabulate import tabulate
 from termcolor import colored, cprint
 
@@ -12,6 +12,18 @@ decs = "desimal"
 hexs = "hexa"
 
 def main():
+    os.system('cls' if os.name == 'nt' else 'clear')
+    print("Checking for Update")
+    subprocess.check_output("git fetch", shell=True)
+    subprocess.check_output("git pull", shell=True)
+    for j in range(1,101):
+        time.sleep(.02)
+        downloading = "[Loading]"
+        percentage = f"[{j}%]"
+        bar = '|' * j
+        color = downloading + bar + percentage
+        print(color, end="\r")
+    print("\n", end="\n")
     os.system('cls' if os.name == 'nt' else 'clear')
     cprint("+==================================+", 'red', attrs=['bold'])
     cprint("|        KONVERTER BILANGAN        |", 'red', attrs=['bold'])
@@ -608,7 +620,7 @@ def hex_dec():
     print("+============[Hexadecimal to Decimal]============+")
     inputan = str(input("Masukkan bilangan Heksadesimal tanpa spacing: "))
     print("+-------------------------------------------------------------------------------------+")
-    
+
 
     rev = inputan[::-1]
     desimal = 0

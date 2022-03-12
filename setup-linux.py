@@ -6,7 +6,7 @@ import subprocess
 verr = str(subprocess.check_output("python --version", shell=True).decode()).replace('\n', '')
 verrP = str(subprocess.check_output("pip --version", shell=True).decode()).replace('\n', '')
 
-print("Checing for Update")
+print("Checking for Update")
 subprocess.check_output("git fetch", shell=True)
 subprocess.check_output("git pull", shell=True)
 for j in range(1,101):
