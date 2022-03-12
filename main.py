@@ -606,7 +606,37 @@ def dec_hex():
 # HEXADECIMAL
 def hex_dec():
     print("+============[Hexadecimal to Decimal]============+")
-    submain(hexs)
+    inputan = str(input("Masukkan bilangan Heksadesimal tanpa spacing: "))
+    print("+-------------------------------------------------------------------------------------+")
+    
+
+    rev = inputan[::-1]
+    desimal = 0
+    arrr = list(rev.strip(" "))
+    mult = []
+    way = []
+    for i in range(0, len(rev)):
+        axx = int(rev[i])
+        kalkul = axx*16**i
+        desimal += kalkul
+        mult.append(f"{kalkul}")
+        way.append(f"({rev[i]}x16)^{i}")
+
+    hasilAkhir = "+".join(mult)
+    # TABLE
+    table = [arrr[::-1], way[::-1], mult[::-1]]
+    cprint(tabulate(table, tablefmt='fancy_grid'), 'yellow')
+    # OUTPUT - GLOBAL COLORS
+    inputanWrn = colored(f"{inputan}", 'yellow', attrs=['bold', 'underline'])
+    akhirWrn = colored(f"{hasilAkhir}", 'yellow', attrs=['underline'])
+    desimalWrn = colored(f"{desimal}", 'yellow', attrs=['bold', 'underline'])
+    print(f"\n+==> Hasil dari biner {inputanWrn} adalah {akhirWrn} = {desimalWrn} Desimal")
+    print("+-------------------------------------------------------------------------------------+")
+    opt = input("LANJUT Konversi Biner ke Desimal? y/N :  ").upper()
+    if opt == "Y":
+        bin_dec()
+    elif opt == "N":
+        submain(hexs)
 
 def hex_bin():
     print("+============[Hexadecimal to Binary]============+")
