@@ -3,7 +3,7 @@ import os, subprocess
 from tabulate import tabulate
 from termcolor import colored, cprint
 
-version = "0.6-dev"
+version = "       ver.1.1-alpha-release      "
 
 bins = "biner"
 octs = "oktal"
@@ -22,7 +22,8 @@ def main(isRunning = 0):
     cprint("+==================================+", 'red', attrs=['bold'])
     cprint("|        KONVERTER BILANGAN        |", 'red', attrs=['bold'])
     cprint("+==================================+", 'red', attrs=['bold'])
-    cprint(f"|    ver.{version}, by encrypt0r     |", 'red', attrs=['bold'])
+    cprint(f"|{version}|", 'red', attrs=['bold'])
+    cprint(f"|           by encrypt0r           |", 'red', attrs=['bold'])
     cprint("+==================================+", 'white', attrs=['bold'])
     cprint("| [1] Biner                        |", 'white', attrs=['bold'])
     cprint("| [2] Oktal                        |", 'white', attrs=['bold'])
@@ -179,7 +180,7 @@ def bin_dec():
 
     hasilAkhir = "+".join(mult)
     # TABLE
-    table = [arrr[::-1], way[::-1], mult[::-1]]
+    table = [arrr[::-1], way, mult]
     cprint(tabulate(table, tablefmt='fancy_grid'), 'yellow')
     # OUTPUT - GLOBAL COLORS
     inputanWrn = colored(f"{inputan}", 'yellow', attrs=['bold', 'underline'])
@@ -541,7 +542,7 @@ def dec_bin():
     print("+============[Decimal to Binary]============+")
     inputan = float(input("Masukkan bilangan desimal: "))
     print("+-------------------------------------------------------------------------------------+")
-    print(f"{inputan}")
+    print(f"{inputan} dibagi 8")
     desimal = 0.0
     desimal += inputan
     hasil  = ""
@@ -561,7 +562,8 @@ def dec_bin():
     else:
         hasilAkhir = hasil[::-1]
 
-    print(f"Hasil Konversi dari {inputan} Desimal adalah {hasilAkhir} Binary")
+    print(f"hasilnya adalah {hasil[::-1]}")
+    print(f"Hasil Konversi dari {inputan} Desimal adalah {hasilAkhir} Binary setelah dilakukan Grouping 4 Bit")
     print("+-------------------------------------------------------------------------------------+")
     opt = input("LANJUT Konversi Desimal ke Biner? y/N :  ").upper()
     if opt == "Y":
@@ -614,7 +616,7 @@ def dec_hex():
     print("+============[Decimal to Hexadecimal]============+")
     inputan = float(input("Masukkan bilangan desimal: "))
     print("+-------------------------------------------------------------------------------------+")
-    print(f"{inputan}")
+    print(f"{inputan} dibagi 16")
     desimal = 0.0
     desimal += inputan
     hasil  = ""
@@ -736,6 +738,125 @@ def hex_bin():
 
 def hex_oct():
     print("+============[Hexadecimal to Octal]============+")
+    inputan = str(input("Masukkan bilangan Heksadesimal tanpa spacing: ")).upper()
+    print("+-------------------------------------------------------------------------------------+")
+    arrr = list(inputan.strip(" "))
+    oldstr = arrr
+    newstrr = []
+    hexalph = {
+        "0": "0000",
+        "1": "0001",
+        "2": "0010",
+        "3": "0011",
+        "4": "0100",
+        "5": "0101",
+        "6": "0110",
+        "7": "0111",
+        "8": "1000",
+        "9": "1001",
+        "A": "1010",
+        "B": "1011",
+        "C": "1100",
+        "D": "1101",
+        "E": "1110",
+        "F": "1111"
+        }
+
+    i = 0
+    for strng in oldstr:
+        newstr = strng.replace(strng, hexalph[strng])
+        newstrr.append(newstr)
+        i += 1
+
+    # TABLE
+    table = [arrr + ["Heksa"], newstrr + ["Biner"]]
+    cprint(tabulate(table, tablefmt='fancy_grid'), 'yellow')
+
+    # bin to oct
+    binrs = "".join(newstrr)
+
+    if len(binrs) % 3 == 0:
+        jobss = list(map(''.join, zip(*[iter(binrs)]*3)))
+        hasil = ""
+        for i in range(0, len(jobss)):
+            hasil += oct(int(jobss[i], 2))[2:]
+        hasilAkhir = list(map(( lambda x: ' ' + x + ' '), hasil))
+
+        if len(hasil) % 3 == 2:
+            fn = hasil[0:2]
+            xx = hasil[2:len(hasil)]
+            hass = list(map(''.join, zip(*[iter(xx)]*3)))
+            finals = fn + " " + " ".join(hass)
+        elif len(hasil) % 3 == 1:
+            fn = hasil[0:1]
+            xx = hasil[1:len(hasil)]
+            hass = list(map(''.join, zip(*[iter(xx)]*3)))
+            finals = fn + " " + " ".join(hass)
+        elif len(hasil) % 3 == 0:
+            hass = list(map(''.join, zip(*[iter(hasil)]*3)))
+            finals = " ".join(hass)
+
+        table = [[jobss, "biner"], [hasilAkhir, "oktal"]]
+        print(tabulate(table, tablefmt='fancy_grid'))
+        print(f"+==> Hasil Heksa {inputan} dalam Oktal adalah {finals}")
+
+    elif len(binrs) % 3 == 2:
+        bint = "0" + binrs
+        jobss = list(map(''.join, zip(*[iter(bint)]*3)))
+        hasil = ""
+        for i in range(0, len(jobss)):
+            hasil += oct(int(jobss[i], 2))[2:]
+        hasilAkhir = list(map(( lambda x: ' ' + x + ' '), hasil))
+
+        if len(hasil) % 3 == 2:
+            fn = hasil[0:2]
+            xx = hasil[2:len(hasil)]
+            hass = list(map(''.join, zip(*[iter(xx)]*3)))
+            finals = fn + " " + " ".join(hass)
+        elif len(hasil) % 3 == 1:
+            fn = hasil[0:1]
+            xx = hasil[1:len(hasil)]
+            hass = list(map(''.join, zip(*[iter(xx)]*3)))
+            finals = fn + " " + " ".join(hass)
+        elif len(hasil) % 3 == 0:
+            hass = list(map(''.join, zip(*[iter(hasil)]*3)))
+            finals = " ".join(hass)
+
+
+        table = [[jobss, "biner"], [hasilAkhir, "oktal"]]
+        print(tabulate(table, tablefmt='fancy_grid'))
+        print(f"+==> Hasil Heksa {inputan} dalam Oktal adalah {finals}")
+
+    elif len(binrs) % 3 == 1:
+        bint = "00" + binrs
+        jobss = list(map(''.join, zip(*[iter(bint)]*3)))
+        hasil = ""
+        for i in range(0, len(jobss)):
+            hasil += oct(int(jobss[i], 2))[2:]
+        hasilAkhir = list(map(( lambda x: ' ' + x + ' '), hasil))
+
+        if len(hasil) % 3 == 2:
+            fn = hasil[0:2]
+            xx = hasil[2:len(hasil)]
+            hass = list(map(''.join, zip(*[iter(xx)]*3)))
+            finals = fn + " " + " ".join(hass)
+        elif len(hasil) % 3 == 1:
+            fn = hasil[0:1]
+            xx = hasil[1:len(hasil)]
+            hass = list(map(''.join, zip(*[iter(xx)]*3)))
+            finals = fn + " " + " ".join(hass)
+        elif len(hasil) % 3 == 0:
+            hass = list(map(''.join, zip(*[iter(hasil)]*3)))
+            finals = " ".join(hass)
+
+        table = [[jobss, "biner"], [hasilAkhir, "oktal"]]
+        print(tabulate(table, tablefmt='fancy_grid'))
+        print(f"+==> Hasil Heksa {inputan} dalam Oktal adalah {finals}")
+
+    else:
+        print("[!] TYPE ERROR")
+        exit(0)
+
     print("+-------------------------------------------------------------------------------------+")
     opt = input("LANJUT Konversi Heksa ke Oktal? y/N :  ").upper()
     if opt == "Y":
