@@ -32,4 +32,5 @@
  <li>[0.4-dev] Adding Progressbar</li>
  <li>[0.5-dev] Adding Updater and Installer Script</li>
  <li>[0.6-dev-alpha-rc] Full Basic Feature without Negative Conversion</li>
+ <li>test</li>
 </ol>
