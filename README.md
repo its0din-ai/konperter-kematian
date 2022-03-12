@@ -1,5 +1,6 @@
 <h1>Konperter Kematian</h1>
 <p><strong>versi : 0.6-dev alpha-release-candidate</strong></p>
+<p>**[WARNING]** Tidak dapat mengkonversi *{Lelah menjadi Uang}, {Masalah Menjadi Emas}, dan {Keringat Menjadi Berlian}*</p>
 <p>coded By its0din-ai<p>
 <hr>
 <h3> CARA INSTALASI </h3>
