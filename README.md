@@ -23,3 +23,12 @@
  <li>Jalankan perintah <code>git clone https://github.com/its0din-ai/konperter-kematian</code></li>
  <li>Masuk ke Direktori Program</li>
 </ol>
+
+---
+<h2>Changelog</h2>
+<ol>
+ <li>[0.3-dev] Basic Feature without Terminal Style</li>
+ <li>[0.4-dev] Adding Progressbar</li>
+ <li>[0.5-dev] Adding Updater and Installer Script</li>
+ <li>[0.6-dev-alpha-rc] Full Basic Feature without Negative Conversion</li>
+</ol>
