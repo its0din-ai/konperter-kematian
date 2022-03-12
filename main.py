@@ -1,5 +1,6 @@
 #!/usr/bin/python
 import os
+import time
 import subprocess
 from tabulate import tabulate
 from termcolor import colored, cprint
