@@ -9,22 +9,6 @@ verrP = str(subprocess.check_output("pip --version", shell=True).decode()).repla
 # verrs = str(verr.decode("utf-8")).replace('\n', '')
 # verrsP = str(verrP.decode("utf-8")).replace('\n', '')
 
-if True:
-    print("\n=========================================================================")
-    print("Cheking for Update")
-    print("========================================================================")
-    # subprocess.check_output("python ./updater.py)", shell=True)
-    for j in range(1,101):
-        time.sleep(.02)
-        downloading = "[CHECKING]"
-        percentage = f"[{j}%]"
-        bar = '|' * j
-        color = downloading + bar + percentage
-        
-        print(color, end="\r")
-            
-        print("\n", end="\n")
-
 
 if "Python 3" in verr:
     print("\n=========================================================================")
