@@ -9,6 +9,22 @@ verrP = str(subprocess.check_output("pip --version", shell=True).decode()).repla
 # verrs = str(verr.decode("utf-8")).replace('\n', '')
 # verrsP = str(verrP.decode("utf-8")).replace('\n', '')
 
+if True:
+    print("\n=========================================================================")
+    print("Cheking for Update")
+    print("========================================================================")
+    subprocess.getoutput("python updater.py)", shell=True)
+    for j in range(1,101):
+        time.sleep(.04)
+        downloading = "[CHECKING]"
+        percentage = f"[{j}%]"
+        bar = '|' * j
+        color = downloading + bar + percentage
+        
+        print(color, end="\r")
+            
+        print("\n", end="\n")
+
 
 if "Python 3" in verr:
     print("\n=========================================================================")
@@ -55,7 +71,7 @@ if "Python 3" in verr:
             print(color, end="\r")
             
         print("\n", end="\n")
-        os.system("python3 ./main.py")
+        os.system("python ./main.py")
     else:
         print("pip3 Tidak ada, mohon install PIP terlebih dahulu")
         print(verrP)
