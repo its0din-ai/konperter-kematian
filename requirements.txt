@@ -1,2 +1,3 @@
 tabulate
 termcolor
+alive_progress
